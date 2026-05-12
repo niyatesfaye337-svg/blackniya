@@ -58,6 +58,8 @@
             padding: 80px 24px;
             backdrop-filter: blur(4px);
             background: rgba(0, 0, 0, 0.22);
+            opacity: 0;
+            animation: topUp 1.2s ease-out 0.3s forwards;
         }
 
         .content::before {
@@ -67,6 +69,87 @@
             background: rgba(0, 0, 0, 0.25);
             z-index: -1;
             border-radius: 40px;
+        }
+
+        .top-up-animation {
+            position: absolute;
+            top: 18px;
+            left: 50%;
+            transform: translateX(-50%);
+            display: flex;
+            gap: 10px;
+            z-index: 2;
+        }
+
+        .top-up-animation span {
+            display: block;
+            width: 8px;
+            height: 28px;
+            background: rgba(242, 242, 242, 0.85);
+            border-radius: 999px;
+            animation: pulseUp 1s ease-in-out infinite;
+        }
+
+        .top-up-animation span:nth-child(2) {
+            animation-delay: 0.2s;
+        }
+
+        .top-up-animation span:nth-child(3) {
+            animation-delay: 0.4s;
+        }
+
+        @keyframes topUp {
+            from {
+                transform: translateY(40px);
+                opacity: 0;
+            }
+            to {
+                transform: translateY(0);
+                opacity: 1;
+            }
+        }
+
+        @keyframes pulseUp {
+            0%, 100% {
+                transform: translateY(0);
+                opacity: 0.6;
+            }
+            50% {
+                transform: translateY(-14px);
+                opacity: 1;
+            }
+        }
+
+        #back-to-top {
+            position: fixed;
+            right: 18px;
+            bottom: 18px;
+            width: 48px;
+            height: 48px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: rgba(242, 242, 242, 0.15);
+            color: #F2F2F2;
+            border: 1px solid rgba(242, 242, 242, 0.3);
+            border-radius: 50%;
+            backdrop-filter: blur(12px);
+            cursor: pointer;
+            opacity: 0;
+            pointer-events: none;
+            transition: opacity 0.3s ease, transform 0.3s ease;
+            z-index: 1000;
+        }
+
+        #back-to-top.show {
+            opacity: 1;
+            pointer-events: auto;
+            transform: translateY(0);
+        }
+
+        #back-to-top:hover {
+            background: rgba(242, 242, 242, 0.28);
+            transform: translateY(-4px);
         }
 
         .icon {
@@ -269,12 +352,15 @@
             <p>Black work.</p>
         </div>
         <div class="right-group">
-            <a href="Home page.html">Home</a>
+            <a href="black work.html.html">Home</a>
             <a href="#about-us">About us</a>
             <a href="#contact-us">Contact us</a>
         </div>
     </div>
     <div class="hero-section">
+        <div class="top-up-animation">
+           
+        </div>
         <video class="video-background" autoplay muted loop playsinline>
             <source src="Black work.mp4" type="video/mp4">
             Your browser does not support the video tag.
