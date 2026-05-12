@@ -10,20 +10,71 @@
         html {
             scroll-behavior: smooth;
         }
-        .home-page{
-            /* Mixes 50% black and 50% white to create gray */
-           background-color:#000000
-             /* Sets the text color to black */
-
+        body {
+            margin: 0;
+            min-height: 100vh;
+            background-color: #000;
+            color: #F2F2F2;
+            position: relative;
+            overflow-x: hidden;
+            font-family: Hanamina, sans-serif;
         }
-    
-        .icon{
+
+        .home-page {
+            position: relative;
+            min-height: 100vh;
+            z-index: 1;
+        }
+
+        .hero-section {
+            position: relative;
+            width: 100%;
+            max-width: 1100px;
+            margin: 30px auto 50px;
+            overflow: hidden;
+            border-radius: 40px;
+            box-shadow: 0 18px 45px rgba(0, 0, 0, 0.35);
+        }
+
+        .video-background {
+            position: absolute;
+            inset: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 0;
+            object-fit: cover;
+            opacity: 0.35;
+        }
+
+        .content {
+            position: relative;
+            z-index: 1;
+            min-height: 400px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            padding: 80px 24px;
+            backdrop-filter: blur(4px);
+            background: rgba(0, 0, 0, 0.22);
+        }
+
+        .content::before {
+            content: "";
+            position: absolute;
+            inset: 0;
+            background: rgba(0, 0, 0, 0.25);
+            z-index: -1;
+            border-radius: 40px;
+        }
+
+        .icon {
             display: flex;
             align-items: center;
             justify-content: space-between;
             gap: 20px;
-            padding: 10px;
-    
+            padding: 14px 24px;
         }
    
         .icon:hover {
@@ -32,16 +83,16 @@
         .icon .left-group{
             display: flex;
             align-items: center;
-            gap: 5px;
+            gap: 10px;
         }
         .icon .right-group{
             display: flex;
             align-items: center;
-            gap: 15px;
+            gap: 20px;
         }
         .icon img{
-            width: 100px;
-            height: 100px;
+            width: 90px;
+            height: 90px;
         }
         .icon p{
             font-size: 24px;
@@ -52,51 +103,127 @@
         .icon a{
             text-decoration: none;
             color: #F2F2F2;
-            font-size: 18px;
+            font-size: 16px;
             font-family:Hanamina;
         }
      
       .h{
-        font-size: 36px;
+        font-size: 44px;
         color:#F2F2F2;
         text-align: center;
-        margin-top: 50px;
+        margin: 0;
         font-family:hanamina;
       }
       .pig{
         display: flex;
         flex-direction: column;
         align-items: center;
-        gap: 15px;
+        gap: 18px;
       }
       .pig a {
         display: inline-block;
       }
-      .center-video {
-  width: 900px;
-  max-width: 110%;
-  border-radius: 40px;
-  margin: 20px auto;
-  display: block;
-  box-shadow: 0 10px 30px rgba(0,0,0,0.5);
-  height: 200px;
-}
-    .button {
-      align-items: center;
-  margin: 10px;
-  padding: 12px 28px;
-  font-size: 18px;
-  background-color: #F2F2F2;
-  border: none;
-  border-radius: 40px;
-  cursor: pointer;
-  transition: 0.3s;
-}
+      .button {
+        align-items: center;
+        margin: 10px;
+        padding: 14px 30px;
+        font-size: 18px;
+        background-color: #F2F2F2;
+        color: #111;
+        border: none;
+        border-radius: 40px;
+        cursor: pointer;
+        transition: 0.3s;
+        min-width: 190px;
+      }
 
-.button:hover {
-  transform: scale(1.05);
-  background-color: #e0e0e0;
-}
+      .button:hover {
+        transform: scale(1.05);
+        background-color: #e0e0e0;
+      }
+
+      @media (max-width: 992px) {
+        .hero-section {
+            margin: 24px auto;
+        }
+
+        .content {
+            padding: 70px 18px;
+            min-height: 360px;
+        }
+
+        .h {
+            font-size: 38px;
+        }
+
+        .icon {
+            padding: 12px 18px;
+        }
+
+        .icon img {
+            width: 80px;
+            height: 80px;
+        }
+
+        .icon a {
+            font-size: 15px;
+        }
+      }
+
+      @media (max-width: 768px) {
+        .icon {
+            flex-direction: column;
+            align-items: flex-start;
+            gap: 12px;
+            padding: 16px;
+        }
+
+        .hero-section {
+            border-radius: 28px;
+        }
+
+        .content {
+            padding: 60px 18px;
+            min-height: 320px;
+        }
+
+        .h {
+            font-size: 32px;
+        }
+
+        .button {
+            width: calc(100% - 40px);
+            max-width: 320px;
+            min-width: auto;
+        }
+      }
+
+      @media (max-width: 576px) {
+        .hero-section {
+            margin: 20px 12px 40px;
+        }
+
+        .content {
+            padding: 50px 16px;
+            min-height: 300px;
+        }
+
+        .h {
+            font-size: 28px;
+        }
+
+        .button {
+            width: 100%;
+            max-width: 100%;
+        }
+
+        .aboutus,
+        .contact-us {
+            margin: 40px 16px;
+            padding: 40px 18px;
+            border-radius: 28px;
+        }
+      }
 
       .aboutus{
     margin: 80px auto;
@@ -147,19 +274,21 @@
             <a href="#contact-us">Contact us</a>
         </div>
     </div>
-    <div class="pig">
-        <p class="h">Welcome to Black work</p>
-         <!-- CENTER VIDEO -->
-        <video class="center-video" autoplay muted loop playsinline>
-  <source src="Black work.mp4" type="video/mp4">
-  Your browser does not support the video tag.
-</video>
-      
-        <div>
-      <a href="work.html"><button class="button">I want to hire</button></a>
-      <a href="work.html"><button class="button">I want to work</button></a>
+    <div class="hero-section">
+        <video class="video-background" autoplay muted loop playsinline>
+            <source src="Black work.mp4" type="video/mp4">
+            Your browser does not support the video tag.
+        </video>
+
+        <div class="content pig">
+            <p class="h">Welcome to Blacklion</p>
+            <div>
+                <a href="work.html"><button class="button">I want to hire</button></a>
+                <a href="work.html"><button class="button">I want to work</button></a>
+            </div>
+        </div>
     </div>
-    </div>
+
     <div class="aboutus">
         <p id="about-us">About Us</p>
         <p>At Black work, we are dedicated to connecting talented individuals with exciting job opportunities. Our platform serves as a bridge between employers seeking skilled professionals and job seekers looking for their next career move. We believe in fostering a community where both employers and job seekers can thrive, providing a seamless experience for all users. Whether you're an employer looking to hire top talent or a job seeker searching for your dream job, Black work is here to support you every step of the way.</p>
